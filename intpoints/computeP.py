@@ -149,7 +149,9 @@ def lineHyperplaneIntersection(p, r, Ai, bi):
 
     return p + t * u
 
-def computePoints(A, b):
+def computePointsZeroB(A):
+    A = np.array(A)
+    b = np.zeros(A.shape[0])
     dimensions = np.shape(b)[0]
     sign_vector = np.ones(dimensions)
     visited = set()
