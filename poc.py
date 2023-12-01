@@ -36,8 +36,8 @@ def identify_hyperplanes(dids: List[DID], feasible_rses: Dict[RSE, Set[DID]]) ->
 
 # Example usage
 print("Starting hyperplane identification!")
-dids = ["DID1", "DID2", "DID3"]
-feasible_rses = {0: {"DID1", "DID2"}, 1: {"DID2", "DID3"}, 2: {"DID1", "DID3"}}
+dids = ["DID1", "DID2", "DID3", "DID4"]
+feasible_rses = {0: {"DID1", "DID2", "DID4"}, 1: {"DID2", "DID3", "DID4"}, 2: {"DID1", "DID3", "DID4"}}
 hyperplanes = identify_hyperplanes(dids, feasible_rses)
 print(hyperplanes) # Displaying the identified hyperplanes
 
