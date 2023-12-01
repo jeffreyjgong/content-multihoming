@@ -1,5 +1,6 @@
 import numpy as np
 from typing import List, Dict, Tuple, Set
+from intpoints import computeP
 
 # Example structure for DIDs (Data Identifiers) and RSEs (Rucio Storage Elements)
 # DIDs will be represented as strings and RSEs as integers for simplicity
