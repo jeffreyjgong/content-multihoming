@@ -68,7 +68,7 @@ def CellEnum(c, A, b, visited, root_point):
     if tuple(c) in visited:
         return 
     visited.add(tuple(c))
-    print("Cell:", c)
+    # print("Cell:", c)
 
     adj_cells = AllAdj(c, A, b)
     for h in adj_cells:
@@ -149,21 +149,32 @@ def lineHyperplaneIntersection(p, r, Ai, bi):
 
     return p + t * u
 
-visited = set()
+def computePoints(A, b):
+    dimensions = np.shape(b)[0]
+    sign_vector = np.ones(dimensions)
+    visited = set()
 
-A = np.array([
-    [-1, 0],  # -y <= -1
-    [1, 0],   # y <= 3
-    [0, -1],  # -x <= -1
-    [0, 1]    # x <= 4
-])
+    interior_point = IntPt(sign_vector, A, b)
+    CellEnum(sign_vector, A, b, visited, interior_point)
 
-b = np.array([-1, 3, -1, 4])
+    points = []
 
-sign_vector = np.ones(4)
+    for visit in visited: 
+        points.append(IntPt(visit, A, b))
 
-interior_point = IntPt(sign_vector, A, b)
-CellEnum(sign_vector, A, b, visited, interior_point)
+    return points
 
-for visit in visited: 
-    print(IntPt(visit, A, b))
+if __name__ == '__main__':
+    visited = set()
+
+    A = np.array([
+        [-1, 0],  # -y <= -1
+        [1, 0],   # y <= 3
+        [0, -1],  # -x <= -1
+        [0, 1]    # x <= 4
+    ])
+
+    b = np.array([-1, 3, -1, 4])
+
+    print(computePoints(A, b))
+
