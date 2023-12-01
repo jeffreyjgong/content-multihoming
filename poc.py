@@ -1,10 +1,12 @@
 import numpy as np
 from typing import List, Dict, Tuple, Set
+from did import DID
+from rse import RSE
 
 # Example structure for DIDs (Data Identifiers) and RSEs (Rucio Storage Elements)
 # DIDs will be represented as strings and RSEs as integers for simplicity
-DID = DID()
-RSE = RSE()
+# DID = DID()
+# RSE = RSE()
 
 # Example cost function, modeled as a concave function (simplified version)
 def cost_function(size: int) -> float:
@@ -15,6 +17,7 @@ def cost_function(size: int) -> float:
 def vAsVector(did: DID, feasible_rses: Dict[RSE, Set[DID]]) -> np.ndarray:
     # Example: Vector length equals number of RSEs, with cost values if DID is feasible for the RSE
     vec = np.array([cost_function(1) if did in feasible_rses[rse] else 0 for rse in feasible_rses])
+    # vec = np.array([cost_function(1) if rse in did.rses else 0 for rse in feasible_rses])
     return vec
 
 # Function to identify hyperplanes
