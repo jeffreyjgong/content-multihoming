@@ -1,10 +1,12 @@
 import numpy as np
 from typing import List, Dict, Tuple, Set
+from did import DID
+from rse import RSE
 
 # Example structure for DIDs (Data Identifiers) and RSEs (Rucio Storage Elements)
 # DIDs will be represented as strings and RSEs as integers for simplicity
-DID = str
-RSE = int
+# DID = DID()
+# RSE = RSE()
 
 # Example cost function, modeled as a concave function (simplified version)
 def cost_function(size: int) -> float:

@@ -1,15 +1,12 @@
+from rse import RSE
+from typing import List, Tuple, Optional
+
 class DID:
-    def __init__(self, did, size, replicationRule):
+    def __init__(self, did: str, size: int, replicationRule: Tuple, rses: Optional[List[RSE]] = list(RSE)):
         self.did = did
         self.size = size
         self.replicationRule = replicationRule
-
-class RSE:
-    def __init__(self, name, capacity, dids):
-        self.name = name
-        self.capacity = capacity
-        self.dids = dids
-        self.capacityLeft = capacity - sum([did.size for did in dids])
-        self.capacityUsed = sum([did.size for did in dids])
-        self.cloudCostModel = None
-
+        self.rses = rses
+    
+    def addRSE(self, rse: RSE):
+        self.rses.append(rse)
