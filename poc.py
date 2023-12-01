@@ -1,6 +1,6 @@
 import numpy as np
 from typing import List, Dict, Tuple, Set
-from intpoints import computeP
+from intpoints.computeP import *
 
 # Example structure for DIDs (Data Identifiers) and RSEs (Rucio Storage Elements)
 # DIDs will be represented as strings and RSEs as integers for simplicity
@@ -38,14 +38,18 @@ def identify_hyperplanes(dids: List[DID], feasible_rses: Dict[RSE, Set[DID]]) ->
 # Example usage
 print("Starting hyperplane identification!")
 dids = ["DID1", "DID2", "DID3", "DID4"]
+# dids = ["DID1", "DID2", "DID3"]
 feasible_rses = {0: {"DID1", "DID2", "DID4"}, 1: {"DID2", "DID3", "DID4"}, 2: {"DID1", "DID3", "DID4"}}
+# feasible_rses = {0: {"DID1", "DID2"}, 1: {"DID3", "DID2"}}
 hyperplanes = identify_hyperplanes(dids, feasible_rses)
 print(hyperplanes) # Displaying the identified hyperplanes
 
 print("Starting interior point calculation!")
 
 # BLACKBOXED
-# interior_points = computePs(hyperplanes)
+interior_points = computePointsZeroB(hyperplanes)
+
+print(interior_points)
 
 print("Starting extremal assignment evaluation!")
 
@@ -78,7 +82,7 @@ def compute_extremal_assignments(dids: List[DID], feasible_rses: Dict[RSE, Set[D
     return optimal_assignment
 
 # Placeholder for interior points from Step 2 (blackboxed)
-interior_points = [np.random.rand(len(feasible_rses)) for _ in range(3)]  # Example interior points
+# interior_points = [np.random.rand(len(feasible_rses)) for _ in range(3)]  # Example interior points
 
 # Compute extremal assignments
 optimal_assignments = compute_extremal_assignments(dids, feasible_rses, interior_points)
