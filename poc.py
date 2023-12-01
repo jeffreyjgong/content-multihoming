@@ -4,8 +4,8 @@ from intpoints import computeP
 
 # Example structure for DIDs (Data Identifiers) and RSEs (Rucio Storage Elements)
 # DIDs will be represented as strings and RSEs as integers for simplicity
-DID = DID()
-RSE = RSE()
+DID = str
+RSE = int
 
 # Example cost function, modeled as a concave function (simplified version)
 def cost_function(size: int) -> float:
